@@ -1,0 +1,47 @@
+[
+  {
+    "userName": "yosi benyon",
+    "password": "1234",
+    "id": "551e314e-c97c-4178-a2e1-b602cfd341f0"
+  },
+  {
+    "userName": "lalal ",
+    "password": "1234",
+    "id": "6110f9ea-b3a5-41a5-94c5-22b441d5fd03"
+  },
+  {
+    "userName": "abcd ",
+    "password": "$2b$10$1HSATvE2xHdFhyfXZr/PZ.Uaw6I4UfRNzyYLvKbKnr87C8uLxyprC",
+    "id": "612bc98f-3c96-4f68-b154-7ce4e7af0ea7"
+  },
+  {
+    "userName": "blabla ",
+    "password": "$2b$10$spWMMaFxTrTvVKFziGONROP73raqiKeWS8x1eQ8l3RhuaK2uS4oS2",
+    "id": "418096b2-a88a-4bcd-a920-d2f3a80c040c",
+    "books": []
+  },
+  {
+    "userName": "ohad ",
+    "password": "$2b$10$VVFFvxUtuegvSa74Q63CIu9CK69i9H9lW4eGPG6Cywh7aHzOGCeW2",
+    "id": "ba16b301-6e10-4aed-9c53-d1e6df2fc587",
+    "books": []
+  },
+  {
+    "userName": "ohad12",
+    "password": "$2b$10$XLmeMuk3TTx50CRP8XMJsuMOCFir7J17FDY4AStknIbXG3.IMFdT2",
+    "id": "60fe4b57-efef-49b9-b4e8-1dce85d59d84",
+    "books": []
+  },
+  {
+    "id": "829d89e2-ae3d-4522-8a2b-def44db7fdbb",
+    "userName": "elad",
+    "password": "$2b$10$/4uIg43iNoTaW4LUfSoPDeSSElnmZ.YDfRokMZZYrLyAMFMzPLBnG",
+    "books": []
+  },
+  {
+    "id": "1c4d08eb-b461-475d-8a29-abea1803f87d",
+    "userName": "Zev Paneth",
+    "password": "$2b$15$fnEbZV3vRNWFWk9BkpL7eOnl7EflB0ckD6WdZAczqkGSZh045DORC",
+    "books": []
+  }
+]
