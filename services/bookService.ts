@@ -8,8 +8,6 @@ export const insertBook = async (userId: string ,bookName: string) => {
 
     const book: Book = response.data;
 
-    const existingBook:boolean = !!book;
-
     if (!book || Object.keys(book).length === 0) {
         throw new Error("Book not found.");
     }
