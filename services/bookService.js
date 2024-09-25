@@ -7,14 +7,45 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import axios from 'axios';
 import { readFromJsonFile } from "../DAL/jsonUsers.js";
-export const getBooksByUserId = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
+import { uuid } from "uuidv4";
+export const insertBook = (userId, bookName) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield axios.get(`${process.env.API_URL}/books?search=${bookName}`);
+    const book = response.data;
+    const existingBook = !!book;
+    if (!existingBook) {
+        throw new Error("Book not found.");
+    }
+    book.id = uuid();
+    const user = yield bringUserById(userId);
+    if (!user.books) {
+        user.books = [];
+    }
+    user.books.push(book);
+    return book;
+});
+export const getBooks = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield axios.get(`${process.env.API_URL}/books`);
+        return response.data;
+    }
+    catch (error) {
+        console.error("Error fetching books:", error);
+        throw error;
+    }
+});
+const bringUserById = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield readFromJsonFile();
     const user = users.find((user) => user.id === userId);
     if (!user) {
         throw new Error('User not found.');
     }
+    return user;
+});
+export const getBooksByUserId = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    const user = yield bringUserById(userId);
     if (!user.books) {
         throw new Error('The user does not have a book field.');
     }

@@ -7,7 +7,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getBooksByUserId } from '../services/bookService.js';
+import { getBooksByUserId, getBooks, insertBook } from '../services/bookService.js';
+export const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const books = yield getBooks();
+    res.status(200).json(books);
+});
 export const getAllHisBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userId = req.query.userId;
@@ -27,11 +31,23 @@ export const getAllHisBooks = (req, res) => __awaiter(void 0, void 0, void 0, fu
     }
 });
 export const addBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { userId, bookName } = req.body;
-    if (!userId) {
-        throw new Error("User ID is required.");
+    try {
+        const { userId, bookName } = req.body;
+        if (!userId) {
+            return res.status(400).json({ error: "User ID is required." });
+        }
+        if (!bookName) {
+            return res.status(400).json({ error: "Book Name is required." });
+        }
+        const book = yield insertBook(userId, bookName);
+        res.status(201).json({ bookId: book.id, book: book });
     }
-    if (!bookName) {
-        throw new Error("Book Name is required.");
+    catch (error) {
+        if (error.message === "Book not found." || error.message === 'User not found.') {
+            res.status(404).json({ error: error.message });
+        }
+        else {
+            res.status(500).json({ error: "Internal server error." });
+        }
     }
 });
